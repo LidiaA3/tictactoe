@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.scss'
 
 import Board from './components/Board'
 
@@ -9,6 +8,7 @@ function App() {
     <>
       <h1>This is a TicTacToe game</h1>
       <Board />
+      {/* <button className='restart' onClick={console.log('pressbutton')}>Restart game</button> */}
     </>
   )
 }
