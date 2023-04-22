@@ -1,16 +1,16 @@
 import { useState } from 'react'
 
-import Board from './components/Board'
+import Game from './components/Game'
 
 function App() {
 
   return (
     <>
       <h1>This is a TicTacToe game</h1>
-      <Board />
-      {/* <button className='restart' onClick={console.log('pressbutton')}>Restart game</button> */}
+      <Game />
+      <button className='restart' onClick={() => {window.location.reload()}}>Restart game</button>
     </>
-  )
+  );
 }
 
 export default App
