@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Board from "./Board";
+import Undo from "./icons/Undo";
+import Do from "./icons/Do";
 
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -14,24 +16,10 @@ export default function Game() {
     }
 
     function jumpTo(nextMove) {
-        setCurrentMove(nextMove);
-    }
-
-    const moves = history.map((squares, move) => {
-        let description;
-
-        if (move === 0) {
-            description = 'Ir al inicio del juego';
-        } else {
-            description = 'Ir al movimiento #' + move;
+        if(nextMove >= 0 && nextMove < history.length) {
+            setCurrentMove(nextMove);
         }
-
-        return (
-            <li className="game__moves" key={move}>
-                <button onClick={() => jumpTo(move)}>{description}</button>
-            </li>
-        );
-    })
+    }
 
     return (
         <div className="game">
@@ -39,8 +27,9 @@ export default function Game() {
                 <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
             </div>
 
-            <div className="game__info">
-                <ul className="game__list">{moves}</ul>
+            <div className="moves">
+                <button className={currentMove === 0 ? 'disabled' : ''} onClick={() => jumpTo(currentMove - 1)}><Undo /></button>
+                <button className={currentMove === history.length ? 'disabled' : ''} onClick={() => jumpTo(currentMove + 1)}><Do /></button>
             </div>
         </div>
     );

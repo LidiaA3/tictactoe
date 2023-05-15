@@ -89,6 +89,7 @@ button {
 
 .game {
   display: flex;
+  flex-direction: column;
   gap: 3rem;
 
   &__list {
