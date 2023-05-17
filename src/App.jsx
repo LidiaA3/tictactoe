@@ -6,9 +6,10 @@ function App() {
 
   return (
     <>
-      <h1>This is a TicTacToe game</h1>
+      <header className="header">
+        <h1>Tic Tac Toe</h1>
+      </header>
       <Game />
-      <button className='restart' onClick={() => {window.location.reload()}}>Restart game</button>
     </>
   );
 }

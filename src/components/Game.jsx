@@ -28,9 +28,11 @@ export default function Game() {
             </div>
 
             <div className="moves">
-                <button className={currentMove === 0 ? 'disabled' : ''} onClick={() => jumpTo(currentMove - 1)}><Undo /></button>
-                <button className={currentMove === history.length ? 'disabled' : ''} onClick={() => jumpTo(currentMove + 1)}><Do /></button>
+                <button className="moves__icon"{...currentMove === 0 ? 'disabled' : ''} onClick={() => jumpTo(currentMove - 1)}><Undo /></button>
+                <button className="moves__icon"{...currentMove === history.length ? 'disabled' : ''} onClick={() => jumpTo(currentMove + 1)}><Do /></button>
             </div>
+
+            <button className='restart' onClick={() => {window.location.reload()}}>Restart game</button>
         </div>
     );
 }
