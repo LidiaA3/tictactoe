@@ -30,6 +30,7 @@ body {
 
 #root {
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -61,6 +62,7 @@ h1 {
   width: calc(100% - 4rem);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 2rem;
   padding: 2rem;
 
