@@ -63,6 +63,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   padding: 2rem;
 
@@ -148,6 +149,17 @@ button {
   }
 }
 
+@media all and (min-width: 650px) {
+  button {
+    max-width: 35rem;
+  }
+
+  .square {
+    width: 8rem;
+    height: 8rem;
+    font-size: 5rem;
+  }
+}
 
 
 ::-webkit-scrollbar {
