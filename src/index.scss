@@ -181,6 +181,13 @@ button {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+
+  &__btn {
+    position: absolute;
+    top: .3rem;
+    right: 1.5rem;
+    cursor: pointer;
+  }
 }
 
 
