@@ -5,6 +5,7 @@ export default function Board(props) {
 
   function handleClick(i) {
     if (props.squares[i] || calculateWinner(props.squares)) {
+      {props.defineWinner(true)}
       return;
     }
     const nextSquares = props.squares.slice();

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Board from "./Board";
+import Popup from './Popup';
 import Undo from "./icons/Undo";
 import Do from "./icons/Do";
 
@@ -8,6 +9,8 @@ export default function Game() {
     const [currentMove, setCurrentMove] = useState(0);
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
+
+    const [showPopup, setShowPopup] = useState(false);
 
     function handlePlay(nextSquares) {
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -24,7 +27,7 @@ export default function Game() {
     return (
         <div className="game">
             <div className="game__board">
-                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} defineWinner={setShowPopup} />
             </div>
 
             <div className="moves">
@@ -32,7 +35,8 @@ export default function Game() {
                 <button className="moves__icon"{...currentMove === history.length ? 'disabled' : ''} onClick={() => jumpTo(currentMove + 1)}><Do /></button>
             </div>
 
-            <button className='restart' onClick={() => {window.location.reload()}}>Restart game</button>
+            {showPopup && <Popup winner={xIsNext} />}
+
         </div>
     );
 }
