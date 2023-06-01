@@ -24,10 +24,18 @@ export default function Game() {
         }
     }
 
+    const winner = calculateWinner(currentSquares);
+    let status;
+    if (winner || !currentSquares.includes(null)) {
+        status = 'Ganador: ' + winner;
+    } else {
+        status = 'Siguiente jugador: ' + (xIsNext ? 'X' : 'O');
+    }
+
     return (
         <div className="game">
             <div className="game__board">
-                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} defineWinner={setShowPopup} />
+                <Board xIsNext={xIsNext} squares={currentSquares} status={status} calculateWinner={calculateWinner} onPlay={handlePlay} defineWinner={setShowPopup} />
             </div>
 
             <div className="moves">
@@ -35,8 +43,31 @@ export default function Game() {
                 <button className="moves__icon"{...currentMove === history.length ? 'disabled' : ''} onClick={() => jumpTo(currentMove + 1)}><Do /></button>
             </div>
 
-            {showPopup && <Popup winner={xIsNext} />}
+            {showPopup && <Popup winner={winner} />}
 
         </div>
     );
 }
+
+function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ];
+  
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+  
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+  
+    return null;
+  }
