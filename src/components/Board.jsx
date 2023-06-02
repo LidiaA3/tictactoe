@@ -5,7 +5,7 @@ export default function Board(props) {
 
   function handleClick(i) {
     if (props.squares[i] || props.calculateWinner(props.squares)) {
-      {props.defineWinner(true)}
+      {props.showPopup(true)}
       return;
     }
     const nextSquares = props.squares.slice();

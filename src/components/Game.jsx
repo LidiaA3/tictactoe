@@ -35,7 +35,7 @@ export default function Game() {
     return (
         <div className="game">
             <div className="game__board">
-                <Board xIsNext={xIsNext} squares={currentSquares} status={status} calculateWinner={calculateWinner} onPlay={handlePlay} defineWinner={setShowPopup} />
+                <Board xIsNext={xIsNext} squares={currentSquares} status={status} calculateWinner={calculateWinner} onPlay={handlePlay} showPopup={setShowPopup} />
             </div>
 
             <div className="moves">
@@ -43,7 +43,7 @@ export default function Game() {
                 <button className="moves__icon"{...currentMove === history.length ? 'disabled' : ''} onClick={() => jumpTo(currentMove + 1)}><Do /></button>
             </div>
 
-            {showPopup && <Popup winner={winner} />}
+            {showPopup && <Popup winner={winner} hidePopup={setShowPopup} />}
 
         </div>
     );
