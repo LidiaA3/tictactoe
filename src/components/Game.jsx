@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Board from "./Board";
 import Popup from './Popup';
 import Undo from "./icons/Undo";
@@ -31,6 +31,13 @@ export default function Game() {
     } else {
         status = 'Siguiente jugador: ' + (xIsNext ? 'X' : 'O');
     }
+
+    useEffect(() => {
+        if(winner || !currentSquares.includes(null)) {
+            setShowPopup(true);
+        }
+        console.log(winner)
+    }, [winner, currentSquares])
 
     return (
         <div className="game">

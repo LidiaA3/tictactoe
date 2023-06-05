@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import Square from "./Square";
 
 export default function Board(props) {
 
   function handleClick(i) {
     if (props.squares[i] || props.calculateWinner(props.squares)) {
-      {props.showPopup(true)}
       return;
     }
     const nextSquares = props.squares.slice();
